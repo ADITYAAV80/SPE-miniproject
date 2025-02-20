@@ -8,16 +8,16 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
 
         stage('Build') {
-              steps {
+            steps {
                 sh 'mvn clean package'
-              }
+            }
         }
-
     }
+}
