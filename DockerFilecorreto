@@ -1,0 +1,18 @@
+# Use Amazon Corretto JDK 17 as the base image
+FROM amazoncorretto:17
+
+# Install OpenSSH server
+RUN yum update -y && yum install -y openssh-server && \
+    mkdir /var/run/sshd && echo 'root:root' | chpasswd
+
+# Set working directory
+WORKDIR /app
+
+# Copy JAR file from target directory to container
+COPY target/MiniProject-1.0-SNAPSHOT.jar /app/app.jar
+
+# Expose the SSH port (22) and application port (adjust if needed)
+EXPOSE 22 8080
+
+# Command to run the application
+CMD ["java", "-jar", "/app/app.jar"]
