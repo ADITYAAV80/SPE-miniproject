@@ -102,4 +102,21 @@ public class CalculatorTest {
         });
         assertEquals("Natural logarithm is not defined for non-positive numbers.", exception.getMessage());
     }
+
+    @Test
+    public void testPower() {
+        Calculator calculator = new Calculator();
+        assertEquals(8.0, calculator.power(2.0, 3.0), 0.0001); // 2^3 = 8
+        assertEquals(1.0, calculator.power(5.0, 0.0), 0.0001); // 5^0 = 1
+        assertEquals(0.25, calculator.power(2.0, -2.0), 0.0001); // 2^-2 = 0.25
+    }
+
+    @Test
+    public void testPowerUndefined() {
+        Calculator calculator = new Calculator();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.power(0.0, -1.0); // 0 raised to a negative power
+        });
+        assertEquals("Undefined: 0 cannot be raised to a negative power.", exception.getMessage());
+    }
 }

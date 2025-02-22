@@ -48,4 +48,11 @@ public class Calculator {
         return Math.log(x);
     }
 
+    public double power(double base, double exponent) {
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException("Undefined: 0 cannot be raised to a negative power.");
+        }
+        return Math.pow(base, exponent);
+    }
+
 }

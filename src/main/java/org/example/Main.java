@@ -11,13 +11,13 @@ public class Main {
             displayMenu();
             int choice = getChoice(scanner);
 
-            if (choice == 8) { // Exit option
+            if (choice == 9) { // Exit option
                 System.out.println("Goodbye!");
                 break;
             }
 
-            if (choice < 1 || choice > 7) {
-                System.out.println("Invalid choice. Please select a valid option (1-8).");
+            if (choice < 1 || choice > 8) {
+                System.out.println("Invalid choice. Please select a valid option (1-9).");
                 continue;
             }
 
@@ -30,6 +30,10 @@ public class Main {
             } else if (choice == 7) { // Natural logarithm option
                 double num = getNumberInput(scanner, "Enter a number: ");
                 performNaturalLogarithm(calculator, num);
+            } else if (choice == 8) { // Power option
+                double base = getNumberInput(scanner, "Enter the base: ");
+                double exponent = getNumberInput(scanner, "Enter the exponent: ");
+                performPower(calculator, base, exponent);
             } else {
                 int num1 = getNumberInput(scanner, "Enter the first number: ");
                 int num2 = getNumberInput(scanner, "Enter the second number: ");
@@ -49,7 +53,8 @@ public class Main {
         System.out.println("5. Square Root");
         System.out.println("6. Factorial");
         System.out.println("7. Natural Logarithm (ln)");
-        System.out.println("8. Exit");
+        System.out.println("8. Power");
+        System.out.println("9. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -62,11 +67,11 @@ public class Main {
         }
     }
 
-    private static int getNumberInput(Scanner scanner, String prompt) {
+    private static double getNumberInput(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
             try {
-                return Integer.parseInt(scanner.nextLine());
+                return Double.parseDouble(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
@@ -116,6 +121,14 @@ public class Main {
     private static void performNaturalLogarithm(Calculator calculator, double num) {
         try {
             System.out.println("ln(" + num + ") = " + calculator.ln(num));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private static void performPower(Calculator calculator, double base, double exponent) {
+        try {
+            System.out.println(base + " ^ " + exponent + " = " + calculator.power(base, exponent));
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
