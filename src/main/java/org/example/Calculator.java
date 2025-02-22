@@ -41,4 +41,11 @@ public class Calculator {
         return result;
     }
 
+    public double ln(double x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("Natural logarithm is not defined for non-positive numbers.");
+        }
+        return Math.log(x);
+    }
+
 }

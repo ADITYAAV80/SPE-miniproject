@@ -80,4 +80,26 @@ public class CalculatorTest {
         });
         assertEquals("Factorial is not defined for negative numbers.", exception.getMessage());
     }
+
+    @Test
+    public void testLn() {
+        Calculator calculator = new Calculator();
+        assertEquals(0.0, calculator.ln(1.0), 0.0001); // ln(1) = 0
+        assertEquals(1.6094, calculator.ln(5.0), 0.0001); // ln(5) ≈ 1.6094
+        assertEquals(2.3026, calculator.ln(10.0), 0.0001); // ln(10) ≈ 2.3026
+    }
+
+    @Test
+    public void testLnNonPositiveNumber() {
+        Calculator calculator = new Calculator();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.ln(0.0); // Natural logarithm of 0
+        });
+        assertEquals("Natural logarithm is not defined for non-positive numbers.", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.ln(-1.0); // Natural logarithm of a negative number
+        });
+        assertEquals("Natural logarithm is not defined for non-positive numbers.", exception.getMessage());
+    }
 }

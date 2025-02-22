@@ -11,13 +11,13 @@ public class Main {
             displayMenu();
             int choice = getChoice(scanner);
 
-            if (choice == 7) { // Exit option
+            if (choice == 8) { // Exit option
                 System.out.println("Goodbye!");
                 break;
             }
 
-            if (choice < 1 || choice > 6) {
-                System.out.println("Invalid choice. Please select a valid option (1-7).");
+            if (choice < 1 || choice > 7) {
+                System.out.println("Invalid choice. Please select a valid option (1-8).");
                 continue;
             }
 
@@ -27,6 +27,9 @@ public class Main {
             } else if (choice == 6) { // Factorial option
                 int num = getNumberInput(scanner, "Enter a number: ");
                 performFactorial(calculator, num);
+            } else if (choice == 7) { // Natural logarithm option
+                double num = getNumberInput(scanner, "Enter a number: ");
+                performNaturalLogarithm(calculator, num);
             } else {
                 int num1 = getNumberInput(scanner, "Enter the first number: ");
                 int num2 = getNumberInput(scanner, "Enter the second number: ");
@@ -45,7 +48,8 @@ public class Main {
         System.out.println("4. Divide");
         System.out.println("5. Square Root");
         System.out.println("6. Factorial");
-        System.out.println("7. Exit");
+        System.out.println("7. Natural Logarithm (ln)");
+        System.out.println("8. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -104,6 +108,14 @@ public class Main {
     private static void performFactorial(Calculator calculator, int num) {
         try {
             System.out.println(num + "! = " + calculator.factorial(num));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private static void performNaturalLogarithm(Calculator calculator, double num) {
+        try {
+            System.out.println("ln(" + num + ") = " + calculator.ln(num));
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
