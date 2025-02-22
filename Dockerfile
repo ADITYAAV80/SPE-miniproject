@@ -19,4 +19,4 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/
 EXPOSE 9090 22
 
 # Start SSH in the background and keep the container alive
-CMD ["/bin/sh", "-c", "ssh-keygen -A && /usr/sbin/sshd && exec java -jar /app/app.jar"]
+CMD ["/bin/sh", "-c", "ssh-keygen -A && /usr/sbin/sshd && exec java -jar app.jar"]
