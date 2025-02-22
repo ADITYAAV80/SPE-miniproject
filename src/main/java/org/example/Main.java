@@ -11,19 +11,22 @@ public class Main {
             displayMenu();
             int choice = getChoice(scanner);
 
-            if (choice == 6) { // Exit option
+            if (choice == 7) { // Exit option
                 System.out.println("Goodbye!");
                 break;
             }
 
-            if (choice < 1 || choice > 5) {
-                System.out.println("Invalid choice. Please select a valid option (1-6).");
+            if (choice < 1 || choice > 6) {
+                System.out.println("Invalid choice. Please select a valid option (1-7).");
                 continue;
             }
 
             if (choice == 5) { // Square root option
                 double num = getNumberInput(scanner, "Enter a number: ");
                 performSquareRoot(calculator, num);
+            } else if (choice == 6) { // Factorial option
+                int num = getNumberInput(scanner, "Enter a number: ");
+                performFactorial(calculator, num);
             } else {
                 int num1 = getNumberInput(scanner, "Enter the first number: ");
                 int num2 = getNumberInput(scanner, "Enter the second number: ");
@@ -41,7 +44,8 @@ public class Main {
         System.out.println("3. Multiply");
         System.out.println("4. Divide");
         System.out.println("5. Square Root");
-        System.out.println("6. Exit");
+        System.out.println("6. Factorial");
+        System.out.println("7. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -92,6 +96,14 @@ public class Main {
     private static void performSquareRoot(Calculator calculator, double num) {
         try {
             System.out.println("√" + num + " = " + calculator.sqrt(num));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private static void performFactorial(Calculator calculator, int num) {
+        try {
+            System.out.println(num + "! = " + calculator.factorial(num));
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }

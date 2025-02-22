@@ -61,4 +61,23 @@ public class CalculatorTest {
         });
         assertEquals("Cannot compute square root of a negative number.", exception.getMessage());
     }
+
+    @Test
+    public void testFactorial() {
+        Calculator calculator = new Calculator();
+        assertEquals(1, calculator.factorial(0)); // 0! = 1
+        assertEquals(1, calculator.factorial(1)); // 1! = 1
+        assertEquals(2, calculator.factorial(2)); // 2! = 2
+        assertEquals(6, calculator.factorial(3)); // 3! = 6
+        assertEquals(120, calculator.factorial(5)); // 5! = 120
+    }
+
+    @Test
+    public void testFactorialNegativeNumber() {
+        Calculator calculator = new Calculator();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.factorial(-1); // Factorial of a negative number
+        });
+        assertEquals("Factorial is not defined for negative numbers.", exception.getMessage());
+    }
 }
