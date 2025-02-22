@@ -22,21 +22,21 @@ public class Main {
             }
 
             if (choice == 5) { // Square root option
-                double num = getNumberInput(scanner, "Enter a number: ");
+                double num = getDoubleInput(scanner, "Enter a number: ");
                 performSquareRoot(calculator, num);
             } else if (choice == 6) { // Factorial option
-                int num = getNumberInput(scanner, "Enter a number: ");
+                int num = getIntInput(scanner, "Enter a number: ");
                 performFactorial(calculator, num);
             } else if (choice == 7) { // Natural logarithm option
-                double num = getNumberInput(scanner, "Enter a number: ");
+                double num = getDoubleInput(scanner, "Enter a number: ");
                 performNaturalLogarithm(calculator, num);
             } else if (choice == 8) { // Power option
-                double base = getNumberInput(scanner, "Enter the base: ");
-                double exponent = getNumberInput(scanner, "Enter the exponent: ");
+                double base = getDoubleInput(scanner, "Enter the base: ");
+                double exponent = getDoubleInput(scanner, "Enter the exponent: ");
                 performPower(calculator, base, exponent);
             } else {
-                int num1 = getNumberInput(scanner, "Enter the first number: ");
-                int num2 = getNumberInput(scanner, "Enter the second number: ");
+                int num1 = getIntInput(scanner, "Enter the first number: ");
+                int num2 = getIntInput(scanner, "Enter the second number: ");
                 performOperation(calculator, choice, num1, num2);
             }
         }
@@ -67,7 +67,18 @@ public class Main {
         }
     }
 
-    private static double getNumberInput(Scanner scanner, String prompt) {
+    private static int getIntInput(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+            }
+        }
+    }
+
+    private static double getDoubleInput(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
             try {
