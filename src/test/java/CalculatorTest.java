@@ -44,4 +44,21 @@ public class CalculatorTest {
         });
         assertEquals("Division by zero is not allowed.", exception.getMessage());
     }
+
+    @Test
+    public void testSqrt() {
+        Calculator calculator = new Calculator();
+        assertEquals(2.0, calculator.sqrt(4.0), 0.0001); // √4 = 2
+        assertEquals(3.0, calculator.sqrt(9.0), 0.0001); // √9 = 3
+        assertEquals(0.0, calculator.sqrt(0.0), 0.0001); // √0 = 0
+    }
+
+    @Test
+    public void testSqrtNegativeNumber() {
+        Calculator calculator = new Calculator();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.sqrt(-1.0); // Square root of a negative number
+        });
+        assertEquals("Cannot compute square root of a negative number.", exception.getMessage());
+    }
 }

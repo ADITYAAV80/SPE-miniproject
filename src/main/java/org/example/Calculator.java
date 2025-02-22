@@ -19,4 +19,12 @@ public class Calculator {
         }
         return a / b;
     }
+
+    public double sqrt(double x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("Cannot compute square root of a negative number.");
+        }
+        return Math.sqrt(x);
+    }
+    
 }
