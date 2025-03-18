@@ -1,6 +1,9 @@
 package org.example;
 
 public class Calculator {
+
+    /* adding commment to test if everything is running well */
+
     public int add(int a, int b) {
         return a + b;
     }
