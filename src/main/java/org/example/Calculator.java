@@ -3,6 +3,7 @@ package org.example;
 public class Calculator {
 
     /* adding commment to test if everything is running well */
+    /* comment 2 to test pipeline */
 
     public int add(int a, int b) {
         return a + b;
