@@ -5,6 +5,7 @@ public class Calculator {
     /* adding commment to test if everything is running well */
     /* comment 2 to test pipeline */
     /* comment 3*/
+    /* comment 4 */
 
     public int add(int a, int b) {
         return a + b;
